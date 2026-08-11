@@ -1,0 +1,27 @@
+<section #section class="ai-section">
+    <div class="container">
+        <div class="ai-visual">
+            <div class="ai-glow"></div>
+            <img src="/images/placeholders/ai-hero.png" alt="KeNI AI" />
+        </div>
+
+        <div class="ai-content">
+            <span class="section-label">Meet KeNI AI</span>
+            <h2>Your business, one step ahead.</h2>
+
+            <div class="ai-capabilities-list">
+                @for (capability of capabilities; track capability.id) {
+                <div class="ai-capability">
+                    <div class="ai-capability-icon">
+                        <img [src]="capability.icon" [alt]="capability.title" />
+                    </div>
+                    <div class="ai-capability-text">
+                        <h3>{{ capability.title }}</h3>
+                        <p>{{ capability.description }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,8 @@
+<div class="insight-card">
+    <span class="insight-tag">Smart Insight</span>
+    <h3>{{ title() }}</h3>
+    <p>{{ description() }}</p>
+    @if (ctaLabel()) {
+    <button class="insight-cta">{{ ctaLabel() }}</button>
+    }
+</div>

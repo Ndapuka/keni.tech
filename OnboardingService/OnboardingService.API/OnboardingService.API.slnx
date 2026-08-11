@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="../../BuildingBlocks/BuildingBlocks.Shared.Contracts/BuildingBlocks.Shared.Contracts.csproj" />
+  <Project Path="../Application/Application.csproj" />
+  <Project Path="../Contrats/Contrats.csproj" />
+  <Project Path="../Domain/Domain.csproj" />
+  <Project Path="../Infrastructure/Infrastructure.csproj" />
+  <Project Path="../Tests/Tests.csproj" />
+  <Project Path="OnboardingService.API.csproj" />
+</Solution>

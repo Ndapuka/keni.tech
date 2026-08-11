@@ -1,0 +1,31 @@
+<section #section class="hardware-section">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-label">Hardware</span>
+            <h2>Built for every business.</h2>
+            <p>KeNI-ready devices, or bring your own — we support what you already have.</p>
+        </header>
+
+        <div #grid class="hardware-grid">
+            @for (device of devices; track device.id) {
+            <div class="hardware-card">
+                <div class="hardware-spot"></div>
+                <div class="hardware-icon">
+                    <img [src]="device.icon" [alt]="device.name" />
+                </div>
+                <h3>{{ device.name }}</h3>
+                <p>{{ device.description }}</p>
+            </div>
+            }
+        </div>
+
+        <div class="compatibility-strip">
+            <span class="compatibility-label">Works with your existing hardware</span>
+            <div class="compatibility-logos">
+                @for (partner of partners; track partner.id) {
+                <img [src]="partner.logo" [alt]="partner.name" class="partner-logo" />
+                }
+            </div>
+        </div>
+    </div>
+</section>

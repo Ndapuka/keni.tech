@@ -1,0 +1,33 @@
+<section #section class="trusted-section">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-label">Trusted Worldwide</span>
+            <h2>Built for modern businesses.</h2>
+            <p>
+                KeNI powers restaurants, cafés, retail stores, salons and local
+                businesses with one unified platform.
+            </p>
+        </header>
+    </div>
+
+    <div class="business-scroll-wrapper">
+        <div #scrollTrack class="business-scroll" tabindex="0">
+            @for (biz of businesses; track biz.name) {
+            <div class="business-card">
+                <div class="business-card-media">
+                    <img [src]="biz.icon" [alt]="biz.name" class="business-icon" />
+                </div>
+                <span class="business-name">{{ biz.name }}</span>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div #marquee class="business-marquee">
+        <div class="marquee-track">
+            @for (biz of businesses; track biz.name) {
+            <span class="marquee-item">{{ biz.name }}</span>
+            }
+        </div>
+    </div>
+</section>

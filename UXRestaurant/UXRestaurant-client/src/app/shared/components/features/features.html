@@ -1,0 +1,21 @@
+<section #section class="features-section">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-label">Why It's Different</span>
+            <h2>Not just features.<br />A platform you can trust.</h2>
+            <p>The foundations that make KeNI reliable, secure and ready to scale with you.</p>
+        </header>
+
+        <div #grid class="features-grid">
+            @for (feature of features; track feature.id) {
+            <div class="feature-card" [class.feature-lg]="feature.size === 'lg'">
+                <div class="feature-icon">
+                    <img [src]="feature.icon" [alt]="feature.title" />
+                </div>
+                <h3>{{ feature.title }}</h3>
+                <p class="feature-description">{{ feature.description }}</p>
+            </div>
+            }
+        </div>
+    </div>
+</section>

@@ -1,0 +1,117 @@
+.dashboard-showcase-section {
+    position: relative;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+.showcase-pin {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 0.9fr 1.4fr;
+    gap: 80px;
+    align-items: center;
+    width: 100%;
+}
+
+// ── Nav lateral ─────────────────────────
+.views-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.views-nav-item {
+    display: flex;
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    opacity: 0.4;
+    transition: opacity 0.4s ease, background 0.4s ease;
+
+    .nav-index {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--color-accent);
+        min-width: 28px;
+    }
+
+    .nav-label {
+        display: block;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--color-text);
+        margin-bottom: 4px;
+    }
+
+    .nav-description {
+        font-size: 0.85rem;
+        color: var(--color-text-muted);
+        margin: 0;
+        max-width: 320px;
+    }
+
+    &.active {
+        opacity: 1;
+        background: var(--color-bg-card-hover);
+    }
+}
+
+// ── MacBook mockup ─────────────────────────
+.macbook-mockup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.macbook-screen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: var(--color-bg);
+    border-radius: var(--radius-lg);
+    border: 10px solid #1c1e24;
+    overflow: hidden;
+    box-shadow: 0 40px 100px var(--color-bg-elevated);
+}
+
+.screen-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    &.active {
+        opacity: 1;
+    }
+}
+
+.macbook-base {
+    width: 112%;
+    height: 14px;
+    background: linear-gradient(180deg, #2a2d35, #1c1e24);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .views-nav-item .nav-description {
+        display: none; // poupa espaço em mobile
+    }
+}

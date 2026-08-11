@@ -1,0 +1,39 @@
+<section #section class="pricing-section">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-label">Pricing</span>
+            <h2>Simple pricing. No surprises.</h2>
+            <p>Choose the plan that fits your business today — upgrade any time.</p>
+        </header>
+
+        <div class="pricing-grid">
+            @for (plan of plans; track plan.id) {
+            <div class="pricing-card" [class.highlighted]="plan.highlighted">
+                @if (plan.highlighted) {
+                <span class="popular-badge">Most Popular</span>
+                }
+
+                <h3>{{ plan.name }}</h3>
+                <p class="plan-description">{{ plan.description }}</p>
+
+                <div class="plan-price">
+                    @if (plan.price > 0) {
+                    <span class="price-value">€{{ plan.price }}</span>
+                    <span class="price-period">{{ plan.period }}</span>
+                    } @else {
+                    <span class="price-value">{{ plan.period }}</span>
+                    }
+                </div>
+
+                <ul class="plan-features">
+                    @for (feature of plan.features; track feature) {
+                    <li>{{ feature }}</li>
+                    }
+                </ul>
+
+                <a href="#" class="plan-cta">{{ plan.ctaLabel }}</a>
+            </div>
+            }
+        </div>
+    </div>
+</section>

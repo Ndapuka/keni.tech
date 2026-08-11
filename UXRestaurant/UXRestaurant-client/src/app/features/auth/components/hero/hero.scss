@@ -1,0 +1,292 @@
+:host {
+    display: block;
+    width: 100%;
+}
+
+.home-section {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: var(--color-bg-elevated);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: 15;
+}
+
+.video-player {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    z-index: 1;
+}
+
+.home-content {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--color-text);
+    z-index: 12;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.hero-content {
+    max-width: 950px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 0 var(--space-sm);
+}
+
+.hero-title {
+    font-family: var(--font-family-base);
+    font-size: clamp(4rem, 8vw, 5.5rem);
+    font-weight: 700;
+    line-height: 0.99;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 0 6px 25px rgba(0, 0, 0, 0.85);
+
+}
+
+.hero-subtitle {
+    font-family: var(--font-family-base);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--color-text);
+    opacity: 0.92;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+    margin-top: -10px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 18px;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+// ── Base partilhada pelos dois botões ─────────────────────────
+.btn-primary,
+.btn-secondary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 34px;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    overflow: hidden; // essencial: contém o "shine" dentro da forma do botão
+    isolation: isolate; // garante que o shine não vaza para trás de outros elementos
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+}
+
+.btn-label {
+    position: relative;
+    z-index: 2;
+}
+
+// ── Linha/brilho que atravessa o botão ao hover ─────────────────────────
+// Substitui a antiga linha vermelha (i::before) — agora neutra, como um "loading sweep"
+.btn-shine {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -30%;
+        width: 25%;
+        height: 100%;
+        background: linear-gradient(100deg,
+                transparent 0%,
+                rgba(255, 255, 255, 0.55) 50%,
+                transparent 100%);
+        transform: skewX(-20deg);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+}
+
+// a animação só corre enquanto está em hover — não desperdiça ciclos em repouso
+@keyframes shineSweep {
+    from {
+        left: -30%;
+    }
+
+    to {
+        left: 130%;
+    }
+}
+
+.btn-primary:hover .btn-shine::before,
+.btn-secondary:hover .btn-shine::before {
+    opacity: 1;
+    animation: shineSweep 0.9s ease forwards;
+}
+
+.btn-primary,
+.btn-secondary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 34px;
+    border-radius: var(--radius-pill);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.6s ease, border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+}
+
+.btn-label {
+    position: relative;
+    z-index: 2;
+}
+
+// ── Container do líquido ─────────────────────────
+.btn-liquid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+
+    // sobe a partir de baixo, mais devagar (1.4s) — sensação de encher com peso real
+    transform: translateY(100%);
+    transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-primary:hover .btn-liquid,
+.btn-secondary:hover .btn-liquid {
+    transform: translateY(0%);
+}
+
+// ── Onda no topo da superfície do líquido ─────────────────────────
+.liquid-wave {
+    position: absolute;
+    top: -1px; // sobrepõe ligeiramente para não deixar linha visível entre onda e corpo
+    left: 0;
+    width: 200%; // o dobro da largura: contém o padrão duplicado para loop sem costura
+    height: 14px;
+
+    animation: waveDrift 2.8s linear infinite;
+    animation-play-state: paused; // só "mexe" quando o botão está em hover
+
+    path {
+        fill: inherit; // herda a cor definida no elemento pai (primary/secondary)
+    }
+}
+
+.btn-primary:hover .liquid-wave,
+.btn-secondary:hover .liquid-wave {
+    animation-play-state: running;
+}
+
+@keyframes waveDrift {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+
+    // desloca exatamente 1 período do padrão duplicado — loop perfeito
+}
+
+// ── Corpo do líquido, abaixo da onda ─────────────────────────
+.btn-liquid::after {
+    content: '';
+    position: absolute;
+    top: 12px; // começa logo abaixo da onda, evita gap
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+// ── Primary ─────────────────────────
+.btn-primary {
+    background: var(--color-accent);
+    color: var(--color-bg);
+
+    .liquid-wave {
+        fill: #9dff4d;
+    }
+
+    .btn-liquid::after {
+        background: #9dff4d;
+    }
+
+    &:hover {
+        box-shadow: 0 0 40px var(--color-accent-glow);
+    }
+}
+
+// ── Secondary ─────────────────────────
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    .liquid-wave {
+        fill: var(--color-accent);
+    }
+
+    .btn-liquid::after {
+        background: var(--color-accent);
+    }
+
+    &:hover {
+        color: var(--color-bg);
+        border-color: var(--color-accent);
+        box-shadow: 0 0 40px var(--color-accent-glow);
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-subtitle {
+        margin-top: -30px;
+        font-size: 18px;
+    }
+}

@@ -1,0 +1,132 @@
+.trusted-section {
+    padding: 120px 0;
+    background: var(--color-bg); // era #0b0d12
+    color: var(--color-text); // era #fff (estava implícito no .trusted-section, color: #fff)
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-header {
+    max-width: 620px;
+    margin: 0 auto 64px;
+    text-align: center;
+
+    .section-label {
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-accent); // era #74ed1d
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 700;
+        margin-bottom: 16px;
+        // sem color explícito -> herda var(--color-text) do .trusted-section, ok
+    }
+
+    p {
+        color: var(--color-text-muted); // era rgba(255, 255, 255, 0.7)
+        font-size: 1.05rem;
+    }
+}
+
+.business-scroll-wrapper {
+    padding-left: 2rem;
+    margin-bottom: 80px;
+
+    //mask-image: linear-gradient(to right,
+    // transparent 0,
+    //black 32px,
+    //black calc(100% - 32px),
+    //transparent 100%);
+    // nota: os "black" aqui são só a máscara de opacidade da mask-image,
+    // não são cor visível — não precisam de token.
+}
+
+.business-scroll {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 2rem 24px 0;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.business-card {
+    flex: 0 0 auto;
+    width: 220px;
+    height: 260px;
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+
+    border-radius: 16px;
+    background: var(--color-bg-card); // era rgba(255, 255, 255, 0.03)
+    border: 1px solid var(--color-nav-scrolle); // era rgba(255, 255, 255, 0.06)
+    transition: border-color 0.3s ease, background 0.3s ease;
+
+    &:hover {
+        border-color: var(--color-bg); // era rgba(116, 237, 29, 0.4)
+        background: var(--color-bg-elevated); // era rgba(255, 255, 255, 0.05)
+    }
+}
+
+.business-card-media {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.business-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+.business-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text-muted); // era rgba(255, 255, 255, 0.85) — aproximei ao token mais próximo
+    text-align: center;
+}
+
+.business-marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 1px solid var(--color-border); // era rgba(255, 255, 255, 0.06)
+    padding-top: 32px;
+    margin: 0 2rem;
+}
+
+.marquee-track {
+    display: inline-flex;
+    gap: 64px;
+    will-change: transform;
+}
+
+.marquee-item {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text-subtle); // era rgba(255, 255, 255, 0.35)
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}

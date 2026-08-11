@@ -1,0 +1,14 @@
+<div #card class="trend-chart-card">
+    <div class="trend-header">
+        <span class="card-label">{{ title() }}</span>
+        <span class="trend-badge" [class.positive]="isPositive()" [class.negative]="!isPositive()">
+            {{ isPositive() ? '+' : '' }}{{ changePercent() }}%
+        </span>
+    </div>
+
+    <div class="trend-value">{{ currency() }}{{ currentValue().toLocaleString() }}</div>
+
+    <svg class="trend-chart" viewBox="0 0 300 80" preserveAspectRatio="none">
+        <path class="trend-line" [attr.d]="pathD()" fill="none" />
+    </svg>
+</div>

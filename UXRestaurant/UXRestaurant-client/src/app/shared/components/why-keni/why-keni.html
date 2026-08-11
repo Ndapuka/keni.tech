@@ -1,0 +1,24 @@
+<section #section class="why-section">
+    <div class="container">
+        <div class="why-sticky">
+            <span class="section-label">Why KeNI</span>
+            <h2>One platform.<br />Every reason to switch.</h2>
+            <p>
+                Built to replace five disconnected tools with one system that
+                actually talks to itself.
+            </p>
+        </div>
+
+        <div class="why-list">
+            @for (reason of reasons; track reason.title) {
+            <article class="why-item">
+                <span class="why-index">{{ reason.index }}</span>
+                <div class="why-content">
+                    <h3>{{ reason.title }}</h3>
+                    <p>{{ reason.description }}</p>
+                </div>
+            </article>
+            }
+        </div>
+    </div>
+</section>

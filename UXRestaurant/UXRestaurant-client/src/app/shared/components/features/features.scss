@@ -1,0 +1,228 @@
+.features-section {
+    background: var(--color-bg);
+    color: var(--color-text);
+    padding: 120px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-header {
+    max-width: 620px;
+    margin: 0 auto 64px;
+    text-align: center;
+
+    .section-label {
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 700;
+        margin-bottom: 16px;
+        line-height: 1.15;
+    }
+
+    p {
+        color: var(--color-text-muted);
+        font-size: 1.05rem;
+    }
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.feature-card {
+    position: relative;
+    padding: 28px 24px;
+    border-radius: 18px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: border-color 0.3s ease, background 0.3s ease;
+
+    // hover reveal: descrição escondida por defeito, aparece por cima do título
+    .feature-description {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        padding: 24px;
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: var(--color-text-muted);
+        background: var(--color-bg-card);
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        pointer-events: none;
+    }
+
+    &:hover {
+        border-color: var(--color-border-hover);
+
+        .feature-description {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}
+
+.features-section {
+    background: var(--color-bg);
+    color: var(--color-text);
+    padding: 120px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-header {
+    max-width: 620px;
+    margin: 0 auto 64px;
+    text-align: center;
+
+    .section-label {
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 700;
+        margin-bottom: 16px;
+        line-height: 1.15;
+    }
+
+    p {
+        color: var(--color-text-muted);
+        font-size: 1.05rem;
+    }
+}
+
+// ── Bento grid assimétrico ─────────────────────────
+// 4 colunas. Cards "sm" ocupam 1 coluna; "lg" ocupam 2.
+// grid-auto-flow: dense preenche buracos deixados pelos cards grandes.
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 180px;
+    grid-auto-flow: dense;
+    gap: 20px;
+}
+
+.feature-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 28px;
+    border-radius: 20px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        border-color: var(--color-border-hover);
+        background: var(--color-bg-card-hover);
+        transform: translateY(-2px);
+    }
+}
+
+.feature-lg {
+    grid-column: span 2;
+    grid-row: span 2;
+    background: linear-gradient(160deg, rgba(116, 237, 29, 0.06), rgba(255, 255, 255, 0.02));
+    justify-content: flex-end;
+
+    h3 {
+        font-size: 1.4rem;
+    }
+
+    .feature-description {
+        font-size: 0.95rem;
+        max-width: 320px;
+    }
+
+    .feature-icon {
+        width: 56px;
+        height: 56px;
+
+        img {
+            width: 28px;
+            height: 28px;
+        }
+    }
+}
+
+.feature-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--color-bg-icon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+    }
+}
+
+.feature-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.feature-description {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-lg {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+    }
+
+    .feature-lg,
+    .feature-card {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}

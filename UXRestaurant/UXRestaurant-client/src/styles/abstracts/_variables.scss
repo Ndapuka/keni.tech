@@ -1,0 +1,74 @@
+:root {
+    // ── Tema escuro (default) ─────────────────────────
+    --color-bg: #0b0d12;
+    --color-bg-elevated: #12141c;
+    --color-bg-card: rgba(255, 255, 255, 0.03);
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-border-hover: rgba(116, 237, 29, 0.35);
+    --color-nav-scrolled: rgba(18, 20, 27, 0.72);
+    /* escuro, tema escuro */
+
+    --color-accent: #74ed1d;
+    --color-accent-soft: rgba(116, 237, 29, 0.1);
+    --color-accent-glow: rgba(116, 237, 29, 0.45);
+
+    --color-text: #ffffff;
+    --color-text-muted: rgba(255, 255, 255, 0.65);
+    --color-text-subtle: rgba(255, 255, 255, 0.5);
+
+    --color-danger: #ff4d4f;
+    --color-danger-soft: rgba(255, 77, 79, 0.1);
+    --color-warning: #ffb020;
+    --color-info: #4fd1ff;
+
+    // ── Tokens "inversos" — para elementos que precisam de contraste
+    // garantido contra a própria superfície do tema (ex: botão CTA branco no navbar) ─────────────────────────
+    --color-inverse-bg: #ffffff;
+    --color-inverse-text: #0b0d12;
+
+    --font-family-base: 'Inter', sans-serif;
+
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 40px;
+    --space-xl: 64px;
+    --space-2xl: 120px;
+
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 32px;
+    --radius-pill: 999px;
+
+    --navbar-height: 84px;
+    --container-max-width: 1200px;
+
+    --theme-transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+// ── Tema claro — estilo Apple: cinzento metálico, texto escuro ─────────────────────────
+[data-theme='light'] {
+    --color-bg: #f5f5f7; // exatamente o cinza-base que a Apple usa
+    --color-bg-elevated: #ffffff; // cards "flutuam" a branco sobre o cinza — mesmo padrão da Apple
+    --color-bg-card: rgba(0, 0, 0, 0.03);
+    --color-border: rgba(0, 0, 0, 0.08);
+    --color-border-hover: rgba(87, 179, 16, 0.35);
+    --color-nav-scrolled: rgba(230, 231, 233, 0.75);
+    /* cinza um pouco mais escuro que --color-bg (#f5f5f7), tema claro */
+
+    --color-accent: #57b310; // mesmo verde da marca, ajustado para contraste em fundo claro
+    --color-accent-soft: rgba(87, 179, 16, 0.08);
+    --color-accent-glow: rgba(87, 179, 16, 0.3);
+
+    --color-text: #1d1d1f; // quase-preto da Apple, não #000 puro
+    --color-text-muted: rgba(29, 29, 31, 0.65);
+    --color-text-subtle: rgba(29, 29, 31, 0.5);
+
+    --color-danger: #d92d2f;
+    --color-danger-soft: rgba(217, 45, 47, 0.08);
+    --color-warning: #b8790a;
+    --color-info: #0080b8;
+
+    --color-inverse-bg: #1d1d1f; // inverte: no tema claro, este botão fica escuro
+    --color-inverse-text: #ffffff;
+}

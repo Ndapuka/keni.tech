@@ -1,0 +1,56 @@
+.trend-chart-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    padding: 28px;
+}
+
+.trend-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+}
+
+.trend-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 20px;
+
+    &.positive {
+        color: var(--color-accent);
+        background: var(--color-accent-soft);
+    }
+
+    &.negative {
+        color: var(--color-danger);
+        background: var(--color-danger-soft);
+    }
+}
+
+.trend-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.trend-chart {
+    width: 100%;
+    flex: 1;
+    min-height: 80px;
+}
+
+.trend-line {
+    stroke: var(--color-accent);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}

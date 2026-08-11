@@ -1,0 +1,23 @@
+<!-- features/landing/pages/home/home.html -->
+<app-navbar (loginClicked)="openAuthModal()"></app-navbar>
+<app-hero></app-hero>
+<app-trusted-by-business></app-trusted-by-business>
+<app-why-keni></app-why-keni>
+<app-dashboard-preview></app-dashboard-preview>
+<app-products></app-products>
+<app-hardware></app-hardware>
+<app-features></app-features>
+<app-ai></app-ai>
+<app-dashboard-showcase></app-dashboard-showcase>
+<app-testimonials></app-testimonials>
+<app-pricing></app-pricing>
+<app-faq id="faq"></app-faq>
+<app-cta-banner></app-cta-banner>
+<app-footer></app-footer>
+
+<app-auth-modal *ngIf="showAuthModal" (closed)="closeAuthModal()" (loginSuccess)="onLoginSuccess()">
+</app-auth-modal>
+
+
+
+<!-- <app-preloader></app-preloader> -->

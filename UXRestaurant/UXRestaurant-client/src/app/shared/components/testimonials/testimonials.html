@@ -1,0 +1,45 @@
+<section #section class="testimonials-section">
+    <div class="container">
+        <header class="section-header entry-animate">
+            <span class="section-label">Trusted Worldwide</span>
+            <h2>
+                @if (hasRealTestimonials()) {
+                Loved by businesses like yours.
+                } @else {
+                Built for businesses ready to grow.
+                }
+            </h2>
+        </header>
+
+        @if (hasRealTestimonials()) {
+        <div #track class="testimonials-track entry-animate">
+            @for (testimonial of testimonials; track testimonial.id) {
+            <article class="testimonial-card">
+                <p class="testimonial-quote">&ldquo;{{ testimonial.quote }}&rdquo;</p>
+                <div class="testimonial-author">
+                    <img [src]="testimonial.avatar" [alt]="testimonial.authorName" class="author-avatar" />
+                    <div>
+                        <span class="author-name">{{ testimonial.authorName }}</span>
+                        <span class="author-role">{{ testimonial.authorRole }}, {{ testimonial.businessName }}</span>
+                    </div>
+                </div>
+            </article>
+            }
+        </div>
+        } @else {
+        <div class="trust-metrics entry-animate">
+            @for (metric of trustMetrics; track metric.id) {
+            <div class="trust-metric">
+                <span class="metric-value">{{ metric.value }}</span>
+                <span class="metric-label">{{ metric.label }}</span>
+            </div>
+            }
+        </div>
+
+        <p class="waitlist-note entry-animate">
+            Be among the first businesses to run on KeNI.
+            <a href="#">Join early access →</a>
+        </p>
+        }
+    </div>
+</section>

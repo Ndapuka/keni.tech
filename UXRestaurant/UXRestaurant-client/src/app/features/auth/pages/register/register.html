@@ -1,0 +1,87 @@
+<div class="auth-card">
+
+    <div class="auth-header">
+        <h2>Criar Conta</h2>
+        <p>Junte-se a Keni.</p>
+    </div>
+
+    @if (!showMessage) {
+    <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="register()">
+
+        <div class="form-field">
+            <input type="text" placeholder="Nome Completo" formControlName="personName"
+                [class.has-error]="registerForm.get('personName')?.invalid && registerForm.get('personName')?.touched">
+            @if (registerForm.get('personName')?.invalid && registerForm.get('personName')?.touched) {
+            <span class="field-error">Nome é obrigatório.</span>
+            }
+        </div>
+
+        <div class="form-field">
+            <input type="email" placeholder="Email" formControlName="email"
+                [class.has-error]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+            @if (registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched) {
+            <span class="field-error">Email é obrigatório.</span>
+            }
+            @if (registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched) {
+            <span class="field-error">Introduza um email válido.</span>
+            }
+            @if (registerForm.get('email')?.hasError('emailTaken') && registerForm.get('email')?.touched) {
+            <span class="field-error">Este email já está registado.</span>
+            }
+            @if (registerForm.get('email')?.pending) {
+            <span class="field-hint">A verificar disponibilidade...</span>
+            }
+        </div>
+
+        <div class="form-field">
+            <input type="password" placeholder="Password" formControlName="password"
+                [class.has-error]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+            @if (registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched) {
+            <span class="field-error">Password é obrigatória.</span>
+            }
+            @if (registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched) {
+            <span class="field-error">
+                Mínimo de {{ registerForm.get('password')?.errors?.['minlength']?.requiredLength }} caracteres.
+            </span>
+            }
+        </div>
+
+        <div class="form-field">
+            <select formControlName="gender"
+                [class.has-error]="registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched">
+                <option value="">Selecione o género</option>
+                <option value="0">Masculino</option>
+                <option value="1">Feminino</option>
+            </select>
+            @if (registerForm.get('gender')?.invalid && registerForm.get('gender')?.touched) {
+            <span class="field-error">Selecione um género.</span>
+            }
+        </div>
+
+        <div class="form-field">
+            <input type="text" placeholder="Telefone (Opcional)" formControlName="phoneNumber"
+                [class.has-error]="registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched">
+            @if (registerForm.get('phoneNumber')?.invalid && registerForm.get('phoneNumber')?.touched) {
+            <span class="field-error">Número de telefone inválido.</span>
+            }
+        </div>
+
+        <button type="submit" [disabled]="registerForm.invalid || isSubmitting">
+            {{ isSubmitting ? 'A criar...' : 'Criar Conta' }}
+        </button>
+
+    </form>
+    } @else {
+    <app-auth-message [icon]="isError ? '✕' : '✔'" [title]="messageTitle" [message]="messageText"
+        [buttonText]="isError ? 'Tentar novamente' : 'Ir para Login'" (buttonClick)="onMessageButtonClick()">
+    </app-auth-message>
+    }
+
+    <div class="auth-footer">
+        <p>
+            Já possui conta?
+            <a (click)="openLogin()">Entrar</a>
+        </p>
+    </div>
+
+</div>

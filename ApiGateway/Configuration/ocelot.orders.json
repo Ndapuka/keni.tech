@@ -1,0 +1,197 @@
+﻿{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/orders",
+      "DownstreamPathTemplate": "/api/orders",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orders-service",
+          "Port": 8080
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 5000
+      },
+      "RetryOptions": {
+        "RetryCount": 3,
+        "RetryOnServerErrors": true,
+        "RetryTimeout": 1000
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1m",
+        "PeriodTimespan": 60,
+        "Limit": 100,
+        "ClientIdHeader": "ClientId",
+        "HttpStatusCode": 429
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "Orders"
+      },
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/gateway/orders/{id}",
+      "DownstreamPathTemplate": "/api/orders/{id}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orders-service",
+          "Port": 8080
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 5000
+      },
+      "RetryOptions": {
+        "RetryCount": 3,
+        "RetryOnServerErrors": true,
+        "RetryTimeout": 1000
+      },
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/gateway/orders/user/{userId}",
+      "DownstreamPathTemplate": "/api/orders/user/{userId}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orders-service",
+          "Port": 8080
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "OrdersByUser"
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 5000
+      },
+      "RetryOptions": {
+        "RetryCount": 3,
+        "RetryOnServerErrors": true,
+        "RetryTimeout": 1000
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/gateway/orders/number/{orderNumber}",
+      "DownstreamPathTemplate": "/api/orders/number/{orderNumber}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orders-service",
+          "Port": 8080
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "OrderNumber"
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 5000
+      },
+      "RetryOptions": {
+        "RetryCount": 3,
+        "RetryOnServerErrors": true,
+        "RetryTimeout": 1000
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/gateway/order-items/{everything}",
+      "DownstreamPathTemplate": "/api/orderitems/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orders-service",
+          "Port": 8080
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 5000
+      },
+      "RetryOptions": {
+        "RetryCount": 3,
+        "RetryOnServerErrors": true,
+        "RetryTimeout": 1000
+      },
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/gateway/shipping-addresses/{everything}",
+      "DownstreamPathTemplate": "/api/shippingaddresses/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "orders-service",
+          "Port": 8080
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 5000
+      },
+      "RetryOptions": {
+        "RetryCount": 3,
+        "RetryOnServerErrors": true,
+        "RetryTimeout": 1000
+      },
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      }
+    }
+  ]
+}

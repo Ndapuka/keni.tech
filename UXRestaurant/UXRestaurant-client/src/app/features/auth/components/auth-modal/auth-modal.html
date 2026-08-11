@@ -1,0 +1,26 @@
+<!-- features/auth/components/auth-modal/auth-modal.ts -->
+<div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-panel" (click)="$event.stopPropagation()">
+
+        <button type="button" class="modal-close" (click)="closeModal()" aria-label="Fechar">
+            ✕
+        </button>
+
+        @switch (currentView) {
+        @case ('login') {
+        <app-login (goToRegister)="openRegister()" (goToForgotPassword)="openForgotPassword()"
+            (loginSuccess)="onLoginSuccess()">
+        </app-login>
+        }
+        @case ('register') {
+        <app-register (goToLogin)="openLogin()">
+        </app-register>
+        }
+        @case ('forgot-password') {
+        <app-forgot-password (goToLogin)="openLogin()">
+        </app-forgot-password>
+        }
+        }
+
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<section #section class="faq-section">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-label">FAQ</span>
+            <h2>Everything you need to know..</h2>
+        </header>
+
+        <div class="faq-list">
+            @for (item of items; track item.id) {
+            <div class="faq-item" [class.open]="openId() === item.id">
+                <button class="faq-question" (click)="toggle(item.id)">
+                    <span>{{ item.question }}</span>
+                    <span class="faq-icon">+</span>
+                </button>
+
+                <div class="faq-answer-wrapper">
+                    <p class="faq-answer">{{ item.answer }}</p>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

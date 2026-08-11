@@ -1,0 +1,22 @@
+<div #card class="kpi-health-card">
+    <span class="card-label">Business Health</span>
+
+    <div class="gauge">
+        <svg viewBox="0 0 120 120">
+            <circle class="gauge-track" cx="60" cy="60" r="54" />
+            <circle class="gauge-progress" cx="60" cy="60" r="54" [style.stroke]="statusColor()" />
+        </svg>
+        <div class="gauge-value">
+            <span #counter>0</span>
+            <small>%</small>
+        </div>
+    </div>
+
+    @if (missingItems().length) {
+    <ul class="missing-list">
+        @for (item of missingItems(); track item) {
+        <li>{{ item }}</li>
+        }
+    </ul>
+    }
+</div>

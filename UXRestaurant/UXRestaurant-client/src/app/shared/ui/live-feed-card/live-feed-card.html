@@ -1,0 +1,17 @@
+<div class="live-feed-card">
+    <div class="live-header">
+        <span class="card-label">Live Operations</span>
+        <span class="live-dot"><span class="pulse"></span>Live</span>
+    </div>
+
+    <ul class="feed-list">
+        @for (event of visibleEvents(); track event.id) {
+        <li class="feed-item">
+            <span class="feed-icon">{{ icons[event.icon] }}</span>
+            <span class="feed-message">{{ event.message }}</span>
+            <span class="feed-time">just now</span>
+
+        </li>
+        }
+    </ul>
+</div>

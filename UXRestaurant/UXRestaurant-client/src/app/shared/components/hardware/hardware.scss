@@ -1,0 +1,148 @@
+.hardware-section {
+    background: var(--color-bg);
+    color: var(--color-text);
+    padding: 120px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-header {
+    max-width: 620px;
+    margin: 0 auto 64px;
+    text-align: center;
+
+    .section-label {
+        display: inline-block;
+        font-size: 13px;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--color-accent);
+        margin-bottom: 16px;
+    }
+
+    h2 {
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+
+    p {
+        color: var(--color-text-muted);
+        font-size: 1.05rem;
+    }
+}
+
+.hardware-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 80px;
+}
+
+.hardware-card {
+    position: relative;
+    padding: 32px 28px;
+    border-radius: 20px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, border-color 0.3s ease;
+    cursor: default;
+
+    &:hover {
+        border-color: var(--color-border-hover);
+    }
+}
+
+// "luz" que segue o cursor — CSS puro, coordenadas vindas do JS via custom properties
+.hardware-spot {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--hardware-spot-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hardware-card:hover .hardware-spot {
+    border-color: var(--color-border-hover); // era rgba(116, 237, 29, 0.4)
+    //background: var(--color-bg-elevated);
+    opacity: 1;
+    box-shadow: 0 0 120px var(--color-bg); // era rgba(116, 237, 29, 0.06)
+}
+
+.hardware-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--color-bg-icon);
+    margin-bottom: 20px;
+
+    img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
+}
+
+.hardware-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.hardware-card p {
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.compatibility-strip {
+    border-top: 1px solid var(--color-border);
+    padding-top: 40px;
+    text-align: center;
+}
+
+.compatibility-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 28px;
+}
+
+.compatibility-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    flex-wrap: wrap;
+}
+
+.partner-logo {
+    height: 24px;
+    object-fit: contain;
+    opacity: 0.5;
+    filter: grayscale(1) brightness(2);
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+@media (max-width: 900px) {
+    .hardware-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

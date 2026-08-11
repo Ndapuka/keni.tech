@@ -1,0 +1,41 @@
+<section #section class="products-section">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-label">Products</span>
+            <h2>One Platform.<br />Every Service.</h2>
+
+            <div class="nav-controls">
+                <button type="button" class="nav-arrow" (click)="goPrev()" aria-label="Previous">‹</button>
+                <button type="button" class="nav-arrow" (click)="goNext()" aria-label="Next">›</button>
+            </div>
+        </header>
+    </div>
+
+    <div #track class="horizontal-wrapper" tabindex="0">
+        @for (item of extendedList; track item.key) {
+        <article class="product-card" [class.active]="activeIndex() === item.realIndex">
+            <div class="product-icon">
+                <img [src]="item.service.icon" [alt]="item.service.title" />
+            </div>
+
+            <h3 class="product-title">{{ item.service.title }}</h3>
+            <p class="product-tagline">{{ item.service.tagline }}</p>
+
+            <ul class="product-features">
+                @for (feature of item.service.features; track feature) {
+                <li>{{ feature }}</li>
+                }
+            </ul>
+
+            <a href="#" class="product-link">Learn More →</a>
+        </article>
+        }
+    </div>
+
+    <div class="dots">
+        @for (service of services; track service.id; let i = $index) {
+        <button type="button" class="dot" [class.active]="activeIndex() === i" (click)="scrollToRealIndex(i)"
+            [attr.aria-label]="'Go to ' + service.title"></button>
+        }
+    </div>
+</section>

@@ -1,0 +1,215 @@
+.auth-card {
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.auth-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+    text-align: center;
+}
+
+.auth-subtitle {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-md);
+    text-align: center;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    gap: var(--space-sm);
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+}
+
+.auth-label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+.auth-input {
+    padding: 13px var(--space-sm);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    font-family: var(--font-family-base);
+    font-size: 0.9375rem;
+    transition: var(--theme-transition), border-color 0.15s ease;
+    width: 100%;
+    box-sizing: border-box;
+
+
+    &:focus {
+        outline: none;
+        border-color: var(--color-accent);
+    }
+
+    &::placeholder {
+        color: var(--color-text-subtle);
+    }
+
+    &.has-error {
+        border-color: var(--color-danger);
+    }
+}
+
+.auth-field-error {
+    font-size: 0.8125rem;
+    color: var(--color-danger);
+}
+
+.auth-banner {
+    padding: 12px var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &--error {
+        background: var(--color-danger-soft);
+        color: var(--color-danger);
+    }
+
+    &--info {
+        background: var(--color-accent-soft);
+        color: var(--color-accent);
+    }
+}
+
+.auth-btn-primary {
+    padding: 14px var(--space-sm);
+    border: none;
+    border-radius: var(--radius-sm);
+    background: var(--color-accent);
+    color: var(--color-inverse-text);
+    font-size: 0.9375rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+
+
+    &:hover:not(:disabled) {
+        opacity: 0.88;
+    }
+
+    &:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+}
+
+.auth-btn-link {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--color-accent);
+    font-size: inherit;
+    font-weight: 600;
+    cursor: pointer;
+
+    //display: flex;
+    //justify-content: center;
+    //align-items: center;
+
+    //text-align: center;
+    //width: 100%;
+
+
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+// src/styles/components/_auth.scss
+.auth-link-end {
+    align-self: flex-end;
+    white-space: nowrap;
+    font-size: 0.8125rem;
+}
+
+.auth-footer-text {
+    margin: var(--space-sm) 0 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+// ── Estado de mensagem (sucesso/erro) — usado pelo AuthMessage ─────────────────────────
+
+.auth-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) 0;
+    animation: authFadeIn 0.25s ease;
+}
+
+.auth-message-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-pill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: var(--color-inverse-text);
+    margin-bottom: 4px;
+
+    &--success {
+        background: var(--color-accent);
+    }
+
+    &--error {
+        background: var(--color-danger);
+        color: var(--color-inverse-bg);
+    }
+}
+
+.auth-message-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+}
+
+.auth-message-text {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    max-width: 320px;
+    margin: 0 0 var(--space-xs);
+}
+
+@keyframes authFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

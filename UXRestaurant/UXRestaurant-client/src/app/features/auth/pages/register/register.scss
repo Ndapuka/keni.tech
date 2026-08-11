@@ -1,0 +1,129 @@
+// features/auth/pages/register/register.scss
+
+.auth-header {
+    text-align: center;
+    margin-bottom: var(--space-sm);
+
+    h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--color-text);
+        margin: 0 0 4px;
+    }
+
+    p {
+        font-size: 0.875rem;
+        color: var(--color-text-muted);
+        margin: 0;
+    }
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+
+    button[type="submit"] {
+        padding: 14px var(--space-sm);
+        border: none;
+        border-radius: var(--radius-sm);
+        background: var(--color-accent);
+        color: var(--color-inverse-text);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity 0.15s ease, box-shadow 0.15s ease;
+        margin-top: var(--space-xs);
+
+        &:hover:not(:disabled) {
+            box-shadow: 0 0 20px var(--color-accent-glow);
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
+
+.field-hint {
+    font-size: 0.8125rem;
+    color: var(--color-text-subtle);
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+
+    input,
+    select {
+        padding: 12px var(--space-sm);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        background: var(--color-bg-card);
+        color: var(--color-text);
+        font-size: 0.9375rem;
+        transition: var(--theme-transition), border-color 0.15s ease;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px var(--color-accent-soft);
+        }
+
+        &.has-error {
+            border-color: var(--color-danger);
+        }
+    }
+
+    input::placeholder {
+        color: var(--color-text-subtle);
+    }
+
+    // select customizado — seta própria, sem aparência nativa
+    select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23A0A0A0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right var(--space-sm) center;
+        background-size: 12px;
+        padding-right: calc(var(--space-sm) * 2 + 12px);
+
+        option {
+            background: var(--color-bg-card);
+            color: var(--color-text);
+        }
+    }
+}
+
+.field-error {
+    font-size: 0.8125rem;
+    color: var(--color-danger);
+}
+
+.auth-footer {
+    margin-top: var(--space-sm);
+    text-align: center;
+
+    p {
+        margin: 0;
+        font-size: 0.875rem;
+        color: var(--color-text-muted);
+    }
+
+    a {
+        color: var(--color-accent);
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

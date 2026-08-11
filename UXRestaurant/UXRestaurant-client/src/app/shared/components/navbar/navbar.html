@@ -1,0 +1,256 @@
+<header class="header" [class.scrolled]="isScrolled">
+    <div class="header-inner">
+
+        <div class="header-left">
+            <a href="/" class="logo-link">
+                <img src="/images/logo.png" alt="KeNI" class="logo" />
+            </a>
+
+            <nav class="main-nav">
+
+                <!-- Business Types -->
+                <div class="nav-item" (mouseenter)="openMenu('business')" (mouseleave)="scheduleClose()">
+                    <a href="#" class="nav-link" [class.active]="activeMenu() === 'business'">
+                        <span>Business Types</span>
+                    </a>
+
+                    @if (activeMenu() === 'business') {
+                    <div class="mega-panel panel-grid" (mouseenter)="cancelClose()" (mouseleave)="scheduleClose()">
+                        @for (biz of businessTypes; track biz.slug) {
+                        <a href="#" class="panel-grid-item">
+                            <img [src]="biz.icon" [alt]="biz.name" class="panel-icon" />
+                            <div>
+                                <span class="panel-item-title">{{ biz.name }}</span>
+                                <p class="panel-item-desc">{{ biz.description }}</p>
+                            </div>
+                        </a>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Products -->
+                <div class="nav-item" (mouseenter)="openMenu('products')" (mouseleave)="scheduleClose()">
+                    <a href="#" class="nav-link" [class.active]="activeMenu() === 'products'">
+                        <span>Products</span>
+                    </a>
+
+                    @if (activeMenu() === 'products') {
+                    <div class="mega-panel panel-list" (mouseenter)="cancelClose()" (mouseleave)="scheduleClose()">
+                        @for (product of productsMenu; track product.slug) {
+                        <a href="#" class="panel-list-item">
+                            <img [src]="product.icon" [alt]="product.name" class="panel-icon-sm" />
+                            <div>
+                                <span class="panel-item-title">{{ product.name }}</span>
+                                <p class="panel-item-desc">{{ product.description }}</p>
+                            </div>
+                        </a>
+                        }
+                    </div>
+                    }
+                </div>
+
+                <!-- Partners -->
+                <div class="nav-item" (mouseenter)="openMenu('partners')" (mouseleave)="scheduleClose()">
+                    <a href="#" class="nav-link" [class.active]="activeMenu() === 'partners'">
+                        <span>Partners</span>
+                    </a>
+
+                    @if (activeMenu() === 'partners') {
+                    <div class="mega-panel panel-partners" (mouseenter)="cancelClose()" (mouseleave)="scheduleClose()">
+                        <span class="panel-eyebrow">Integration Partners</span>
+                        <div class="partners-grid">
+                            @for (partner of partners; track partner.name + $index) {
+                            @if (partner.category !== 'coming-soon') {
+                            <a href="#" class="partner-slot">
+                                <img [src]="partner.logo" [alt]="partner.name" />
+                            </a>
+                            } @else {
+                            <div class="partner-slot partner-slot-empty">
+                                <span>Coming Soon</span>
+                            </div>
+                            }
+                            }
+                        </div>
+                    </div>
+                    }
+                </div>
+            </nav>
+        </div>
+
+        <div class="header-right">
+
+            <!-- More -->
+            <div class="nav-item" (mouseenter)="openMenu('more')" (mouseleave)="scheduleClose()">
+                <a href="#" class="nav-link" [class.active]="activeMenu() === 'more'">
+                    <span>More</span>
+                </a>
+
+                @if (activeMenu() === 'more') {
+                <div class="mega-panel panel-simple" (mouseenter)="cancelClose()" (mouseleave)="scheduleClose()">
+                    @for (item of moreMenu; track item.label) {
+                    <a [href]="item.href" class="panel-simple-item">
+                        <span class="panel-item-title">{{ item.label }}</span>
+                        <p class="panel-item-desc">{{ item.description }}</p>
+                    </a>
+                    }
+                </div>
+                }
+            </div>
+            <app-theme-toggle></app-theme-toggle>
+
+            <!-- desktop -->
+            <ng-container *ngIf="user(); else loginButton">
+                <div class="user-menu">
+                    <button type="button" class="entrar-link" (click)="toggleMenu()">
+                        <span class="user-avatar">{{ user()!.name.charAt(0) }}</span>
+                        <span>{{ user()!.name }}</span>
+                    </button>
+
+                    <div class="dropdown-menu" *ngIf="menuOpen">
+                        <div class="dropdown-header">
+                            <span class="user-avatar user-avatar-lg">{{ user()!.name.charAt(0) }}</span>
+                            <div class="dropdown-user-info">
+                                <span class="dropdown-user-name">{{ user()!.name }}</span>
+                                <span class="dropdown-user-email">{{ user()!.email }}</span>
+                            </div>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" (click)="openProfile()">Meu Perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item dropdown-item-danger" (click)="logout()">Sair</a>
+                    </div>
+                </div>
+            </ng-container>
+
+            <ng-template #loginButton>
+                <button type="button" class="entrar-link" (click)="openLogin()">
+                    <img src="/icons/user.png" alt="" class="icon-entrar" />
+                    <span>Login</span>
+                </button>
+            </ng-template>
+
+            <button type="button" class="hamburger-btn" [class.open]="isMobileMenuOpen()" (click)="toggleMobileMenu()"
+                aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <button type="button" class="cta-button">Free Trial</button>
+        </div>
+
+    </div>
+</header>
+<!-- Overlay de fundo -->
+@if (isMobileMenuOpen()) {
+<div class="mobile-overlay" (click)="closeMobileMenu()"></div>
+}
+
+<!-- Painel mobile -->
+<div class="mobile-panel" [class.open]="isMobileMenuOpen()">
+    <div class="mobile-panel-header">
+        <img src="/images/logo.png" alt="KeNI" class="logo" />
+        <button type="button" class="mobile-close-btn" (click)="closeMobileMenu()" aria-label="Close menu">
+            ✕
+        </button>
+    </div>
+
+    <div class="mobile-panel-body">
+
+        <!-- Business Types -->
+        <div class="mobile-accordion" [class.open]="mobileAccordion() === 'business'">
+            <button type="button" class="mobile-accordion-trigger" (click)="toggleMobileAccordion('business')">
+                <span>Business Types</span>
+                <span class="accordion-chevron">⌄</span>
+            </button>
+
+            <div class="mobile-accordion-content">
+                @for (biz of businessTypes; track biz.slug) {
+                <a href="#" class="mobile-sub-link" (click)="closeMobileMenu()">
+                    <img [src]="biz.icon" [alt]="biz.name" class="mobile-sub-icon" />
+                    <span>{{ biz.name }}</span>
+                </a>
+                }
+            </div>
+        </div>
+
+        <!-- Products -->
+        <div class="mobile-accordion" [class.open]="mobileAccordion() === 'products'">
+            <button type="button" class="mobile-accordion-trigger" (click)="toggleMobileAccordion('products')">
+                <span>Products</span>
+                <span class="accordion-chevron">⌄</span>
+            </button>
+
+            <div class="mobile-accordion-content">
+                @for (product of productsMenu; track product.slug) {
+                <a href="#" class="mobile-sub-link" (click)="closeMobileMenu()">
+                    <img [src]="product.icon" [alt]="product.name" class="mobile-sub-icon" />
+                    <span>{{ product.name }}</span>
+                </a>
+                }
+            </div>
+        </div>
+
+        <!-- Partners -->
+        <div class="mobile-accordion" [class.open]="mobileAccordion() === 'partners'">
+            <button type="button" class="mobile-accordion-trigger" (click)="toggleMobileAccordion('partners')">
+                <span>Partners</span>
+                <span class="accordion-chevron">⌄</span>
+            </button>
+
+            <div class="mobile-accordion-content">
+                <div class="mobile-partners-grid">
+                    @for (partner of partners; track partner.name + $index) {
+                    @if (partner.category !== 'coming-soon') {
+                    <a href="#" class="mobile-partner-slot" (click)="closeMobileMenu()">
+                        <img [src]="partner.logo" [alt]="partner.name" />
+                    </a>
+                    } @else {
+                    <div class="mobile-partner-slot mobile-partner-empty">
+                        <span>Soon</span>
+                    </div>
+                    }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- More -->
+        <div class="mobile-accordion" [class.open]="mobileAccordion() === 'more'">
+            <button type="button" class="mobile-accordion-trigger" (click)="toggleMobileAccordion('more')">
+                <span>More</span>
+                <span class="accordion-chevron">⌄</span>
+            </button>
+
+            <div class="mobile-accordion-content">
+                @for (item of moreMenu; track item.label) {
+                <a [href]="item.href" class="mobile-sub-link" (click)="closeMobileMenu()">
+                    <span>{{ item.label }}</span>
+                </a>
+                }
+            </div>
+        </div>
+
+    </div>
+
+    <div class="mobile-panel-footer">
+        <!-- mobile -->
+        <ng-container *ngIf="user(); else mobileLoginButton">
+            <button type="button" class="mobile-account-btn" (click)="openProfile()">
+                <img src="/icons/user.png" alt="" class="icon-entrar" />
+                <span>{{ user()!.name }}</span>
+            </button>
+            <button type="button" class="mobile-logout-btn" (click)="logout()">Sair</button>
+        </ng-container>
+
+        <ng-template #mobileLoginButton>
+            <button type="button" class="mobile-account-btn" (click)="openLogin()">
+                <img src="/icons/user.png" alt="" class="icon-entrar" />
+                <span>Login</span>
+            </button>
+        </ng-template>
+
+        <button type="button" class="cta-button cta-button-full">Free Trial</button>
+    </div>
+</div>

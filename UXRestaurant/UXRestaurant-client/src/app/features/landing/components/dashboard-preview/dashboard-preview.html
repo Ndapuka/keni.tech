@@ -1,0 +1,36 @@
+<section #section class="dashboard-preview-section">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-label">Results, Not Just Features</span>
+            <h2>How KeNI improves your business.</h2>
+            <p>A live look at what matters — health, sales, operations and insights, in one glance.</p>
+        </header>
+
+        <div class="bento-grid">
+            @if (health(); as h) {
+            <div class="bento-item item-health">
+                <app-kpi-health-card [score]="h.score" [status]="h.status" [missingItems]="h.missingItems" />
+            </div>
+            }
+
+            @if (trend(); as t) {
+            <div class="bento-item item-trend">
+                <app-trend-chart-card [currentValue]="t.currentValue" [currency]="t.currency"
+                    [changePercent]="t.changePercent" [points]="t.points" />
+            </div>
+            }
+
+            @if (events().length) {
+            <div class="bento-item item-live">
+                <app-live-feed-card [initialEvents]="events()" />
+            </div>
+            }
+
+            @if (insight(); as i) {
+            <div class="bento-item item-insight">
+                <app-insight-card [title]="i.title" [description]="i.description" [ctaLabel]="i.ctaLabel" />
+            </div>
+            }
+        </div>
+    </div>
+</section>

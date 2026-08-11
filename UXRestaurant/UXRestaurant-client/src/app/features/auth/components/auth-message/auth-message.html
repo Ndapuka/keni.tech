@@ -1,0 +1,21 @@
+<!-- features/auth/components/auth-message/auth-message.html -->
+<div class="auth-message">
+
+    <div class="auth-message-icon" [class.auth-message-icon--success]="icon !== '✕'"
+        [class.auth-message-icon--error]="icon === '✕'">
+        {{ icon }}
+    </div>
+
+    <h2 class="auth-message-title">
+        {{ title }}
+    </h2>
+
+    <p class="auth-message-text">
+        {{ message }}
+    </p>
+
+    <button type="button" class="auth-btn-primary" (click)="onButtonClick()">
+        {{ buttonText }}
+    </button>
+
+</div>

@@ -1,0 +1,115 @@
+:host {
+    display: block;
+}
+
+.load-container {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: #e0b289;
+
+    z-index: 9999;
+
+    overflow: hidden;
+}
+
+.anim-bloc {
+
+    position: absolute;
+
+    top: 40%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 400px;
+
+    height: 400px;
+}
+
+.images-container {
+
+    position: absolute;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 0;
+
+    overflow: hidden;
+
+    z-index: 2;
+}
+
+.bloc-txt {
+
+    position: absolute;
+
+    left: -50px;
+
+    bottom: -50px;
+
+    background: white;
+
+    height: 0;
+
+    overflow: hidden;
+
+    z-index: 5;
+}
+
+.bloc-txt h2 {
+
+    padding: 10px 30px;
+
+    color: #222;
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 40px;
+
+    text-transform: uppercase;
+
+    transform: translateY(100px);
+}
+
+.img-flip {
+
+    position: absolute;
+
+    inset: 0;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    background-size: cover;
+}
+
+.flip-img1 {
+
+    background-image: url('/img/image3.png');
+}
+
+.flip-img2 {
+
+    background-image: url('/img/image1.jpg');
+}
+
+.flip {
+
+    position: absolute;
+
+    inset: 0;
+
+    transform: translateY(100%);
+}
+
+.f2 {
+
+    background: #9b1339;
+}

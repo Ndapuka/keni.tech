@@ -1,0 +1,53 @@
+{
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/gateway/auth/{everything}",
+      "DownstreamPathTemplate": "/api/auth/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "users-service",
+          "Port": 8080
+        }
+      ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 5000
+      },
+      "RetryOptions": {
+        "RetryCount": 3,
+        "RetryOnServerErrors": true,
+        "RetryTimeout": 1000
+      }
+    },
+
+    {
+      "UpstreamPathTemplate": "/gateway/users/{everything}",
+      "DownstreamPathTemplate": "/api/users/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS" ],
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "users-service",
+          "Port": 8080
+        }
+      ],
+      "QoSOptions": {
+        "ExceptionsAllowedBeforeBreaking": 3,
+        "DurationOfBreak": 30000,
+        "TimeoutValue": 5000
+      },
+      "RetryOptions": {
+        "RetryCount": 3,
+        "RetryOnServerErrors": true,
+        "RetryTimeout": 1000
+      }
+    }
+  ],
+
+  "GlobalConfiguration": {
+    "BaseUrl": "http://apigateway"
+  }
+}

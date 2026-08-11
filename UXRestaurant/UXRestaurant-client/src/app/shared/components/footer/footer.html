@@ -1,0 +1,34 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="brand-logo">KeNI</span>
+                <p>The complete operating system for your business.</p>
+
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Instagram">ig</a>
+                    <a href="#" aria-label="X">x</a>
+                </div>
+            </div>
+
+            <div class="footer-columns">
+                @for (column of columns; track column.title) {
+                <div class="footer-column">
+                    <h4>{{ column.title }}</h4>
+                    <ul>
+                        @for (link of column.links; track link.label) {
+                        <li><a [href]="link.href">{{ link.label }}</a></li>
+                        }
+                    </ul>
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© {{ currentYear }} KeNI. All rights reserved.</span>
+            <span>Made for keni tech.</span>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,47 @@
+<!-- features/auth/pages/login/login.html -->
+<div class="auth-card">
+
+    <h2 class="auth-title">Entrar</h2>
+    <p class="auth-subtitle">Acede à tua conta KeNI</p>
+
+    <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="login()">
+
+        <div class="auth-field">
+            <label for="login-email" class="auth-label">Email</label>
+            <input id="login-email" type="email" class="auth-input"
+                [class.has-error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+                formControlName="email" autocomplete="email" placeholder="teu@email.com" />
+            @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+            <span class="auth-field-error">Introduz um email válido.</span>
+            }
+        </div>
+
+        <div class="auth-field">
+            <label for="login-password" class="auth-label">Password</label>
+            <input id="login-password" type="password" class="auth-input"
+                [class.has-error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                formControlName="password" autocomplete="current-password" placeholder="••••••••" />
+        </div>
+
+
+
+        @if (errorMessage) {
+        <p class="auth-banner auth-banner--error">{{ errorMessage }}</p>
+        }
+
+        <button type="submit" class="auth-btn-primary" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'A entrar...' : 'Entrar' }}
+        </button>
+
+        <button type="button" class="auth-btn-link" style="align-self: flex-center;" (click)="openForgotPassword()">
+            Esqueceste-te da password?
+        </button>
+
+    </form>
+
+    <p class="auth-footer-text">
+        Ainda não tens conta?
+        <button type="button" class="auth-btn-link" (click)="openRegister()">Criar conta</button>
+    </p>
+
+</div>

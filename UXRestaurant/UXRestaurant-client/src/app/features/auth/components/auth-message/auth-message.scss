@@ -1,0 +1,111 @@
+.auth-message {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px 20px;
+
+    animation: fadeIn .35s ease;
+}
+
+.message-icon {
+
+    width: 90px;
+
+    height: 90px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 48px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 8px 25px rgba(34, 197, 94, .35);
+}
+
+.auth-message h2 {
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+.auth-message p {
+
+    color: #666;
+
+    line-height: 28px;
+
+    max-width: 420px;
+
+    margin-bottom: 35px;
+}
+
+.btn-message {
+
+    width: 100%;
+
+    max-width: 280px;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #a50f45;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.btn-message:hover {
+
+    background: #8b0d3a;
+}
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}

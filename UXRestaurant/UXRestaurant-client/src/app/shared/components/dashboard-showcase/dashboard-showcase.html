@@ -1,0 +1,31 @@
+<section #section class="dashboard-showcase-section" [style.height.vh]="(views.length - 1) * 100 + 100">
+    <div #pinTarget class="showcase-pin">
+        <div class="container">
+
+            <!-- Lista lateral de labels -->
+            <nav class="views-nav">
+                @for (view of views; track view.id; let i = $index) {
+                <div class="views-nav-item" [class.active]="activeIndex() === i">
+                    <span class="nav-index">0{{ i + 1 }}</span>
+                    <div class="nav-text">
+                        <span class="nav-label">{{ view.label }}</span>
+                        <p class="nav-description">{{ view.description }}</p>
+                    </div>
+                </div>
+                }
+            </nav>
+
+            <!-- Mockup do MacBook -->
+            <div class="macbook-mockup">
+                <div class="macbook-screen">
+                    @for (view of views; track view.id; let i = $index) {
+                    <img [src]="view.screenshot" [alt]="view.label" class="screen-image"
+                        [class.active]="activeIndex() === i" />
+                    }
+                </div>
+                <div class="macbook-base"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
