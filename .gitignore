@@ -1,0 +1,44 @@
+# .NET
+**/bin/
+**/obj/
+TestResults/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Angular
+**/node_modules/
+**/dist/
+**/.angular/
+**/.cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Local application configuration
+**/appsettings.Development.json
+**/appsettings.Local.json
+**/appsettings.Production.json
+
+# Cryptographic keys
+*.jwk
+*.jwks
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Secrets
+secrets.json
+secrets.*.json
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
